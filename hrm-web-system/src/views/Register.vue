@@ -16,18 +16,23 @@
         <el-button size="small" type="primary" @click="selectAdrress">选择</el-button>
       </el-form-item>
       <el-form-item prop="logo" label="公司Logo">
-        <el-input type="text" v-model="tenant.logo" auto-complete="off" placeholder="请输入logo！"></el-input>
-        <!--        <el-upload-->
-        <!--                class="upload-demo"-->
-        <!--                action="http://localhost/file/upload"-->
-        <!--                :on-preview="handlePreview"-->
-        <!--                :on-remove="handleRemove"-->
-        <!--                :on-success="handleSuccess"-->
-        <!--                :file-list="fileList"-->
-        <!--                list-type="picture">-->
-        <!--          <el-button size="small" type="primary">点击上传</el-button>-->
-        <!--          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>-->
-        <!--        </el-upload>-->
+        <!--        action="http://localhost:1030/services/common/fastDfs/" 上传接口的地址-->
+        <!--        :on-preview="handlePreview" 缩略图-->
+        <!--        :on-remove="handleRemove"删除成功的处理-->
+        <!--        :on-success="handleSuccess" 删除cg的处理-->
+        <!--        :file-list="fileList" 回显文件列表-->
+        <!--        list-type="picture" 图片-->
+        <el-upload
+                class="upload-demo"
+                action="http://localhost:1030/services/common/fastDfs/"
+                :on-preview="handlePreview"
+                :on-remove="handleRemove"
+                :on-success="handleSuccess"
+                :file-list="fileList"
+                list-type="picture">
+          <el-button size="small" type="primary">点击上传</el-button>
+          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+        </el-upload>
       </el-form-item>
       <el-form-item prop="username" label="公司账号">
         <el-input type="text" v-model="tenant.username" auto-complete="off" placeholder="请输入账号！"></el-input>
@@ -90,7 +95,7 @@
         keyword:'',
         dialogVisable:false,
         // fileList: [{"name":"xxx","http://localhost/"+this.tenant.logo}],
-        fileList: [{name:"xxx",url:"http://localhost/uploads/63f18e2b-0717-4d38-b1d8-b29ab463706f.jpg"}],
+        fileList: [],
         //tenant:tenant 为了做数据表单校验不要嵌套对象
         tenant: {
           companyName: '',
@@ -150,10 +155,24 @@
         console.log(response);
         console.log(file);
         console.log(fileList);
-        this.tenant.logo = response;
+        this.tenant.logo = response.resultObj;
       },
       handleRemove(file, fileList) {
-        console.log(file, fileList);
+        var filePath =file.response.resultObj;
+        this.$http.delete("/common/fastDfs/?path="+filePath)
+                .then(res=>{
+                  if(res.data.success){
+                    this.$message({
+                      message: '删除成功!',
+                      type: 'success'
+                    });
+                  }else{
+                    this.$message({
+                      message: '删除失败!',
+                      type: 'error'
+                    });
+                  }
+                })
       },
       handlePreview(file) {
         console.log(file);
@@ -165,7 +184,7 @@
             this.$confirm('确认入驻吗？', '提示', {}).then(() => {
               //拷贝后面对象的值到新对象,防止后面代码改动引起模型变化
               let para = Object.assign({}, this.tenant); //tenant 本身这个参数里面就有公司和管理员信息
-              // 封装一个对象admin 便于后台接收
+              // 为了后台好接收，封装一个对象放到里面
               let admin = {
                 username: para.username,
                 tel: para.username,
