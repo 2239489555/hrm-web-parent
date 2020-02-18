@@ -7,6 +7,7 @@ import Table from './views/nav1/Table.vue'
 import Department from './views/itsource/department.vue'
 import TenantType from './views/sys/tenantType.vue'
 import Tenant from './views/sys/tenant.vue'
+import CourseType from './views/course/CourseType.vue'
 import Role from './views/itsource/role.vue'
 import Form from './views/nav1/Form.vue'
 import user from './views/nav1/user.vue'
@@ -71,10 +72,10 @@ let routes = [
     {
         path: '/',
         component: Home,
-        name: '导航二',
+        name: '课程中心',
         iconCls: 'fa fa-id-card-o',
         children: [
-            { path: '/page4', component: Page4, name: '页面4' },
+            { path: '/courseType', component: CourseType, name: '课程类型' },
             { path: '/page5', component: Page5, name: '页面5' }
         ]
     },

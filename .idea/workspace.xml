@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b32ebe3-caae-41eb-aa48-e3548f63549f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/hrm-web-system/src/views/course/CourseType.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hrm-web-system/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/hrm-web-system/src/views/Register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrm-web-system/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/hrm-web-system/src/routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +29,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1Xp5H8wGL6aeUZQ7WpT9BehmGd8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -71,18 +74,39 @@
       <workItem from="1581730267444" duration="13236000" />
       <workItem from="1581827148000" duration="4018000" />
       <workItem from="1581902246722" duration="607000" />
-      <workItem from="1581932478539" duration="2299000" />
+      <workItem from="1581932478539" duration="2365000" />
+      <workItem from="1582016437533" duration="1379000" />
     </task>
+    <task id="LOCAL-00001" summary="2-17">
+      <created>1581941017078</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581941017078</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2-17" />
+    <option name="LAST_COMMIT_MESSAGE" value="2-17" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="336" y="0" key="CommitChangelistDialog2" timestamp="1581941016162">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="336" y="0" key="CommitChangelistDialog2/0.0.1536.834@0.0.1536.834" timestamp="1581941016162" />
     <state x="549" y="173" key="FileChooserDialogImpl" timestamp="1581854595516">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="549" y="173" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1581854595516" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1581941019862">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1581941019862" />
     <state x="430" y="242" key="com.intellij.ide.util.TipDialog" timestamp="1581902248894">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
