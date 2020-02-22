@@ -22,7 +22,7 @@
         </el-col>
 
         <!--列表v-loading="listLoading"-->
-        <el-table @row-click="rowClick" :data="courses" v-loading="listLoading" highlight-current-row  style="width: 100%;">
+        <el-table @selection-change="selsChange" @row-click="rowClick" :data="courses" v-loading="listLoading" highlight-current-row  style="width: 100%;">
             <!--多选框-->
             <el-table-column type="selection" width="55">
             </el-table-column>
@@ -217,6 +217,9 @@
             }
         },
         methods: {
+            selsChange: function (sels) {
+                this.sels = sels;
+            },
             handleSuccess(response, file, fileList){
                 console.log("===========")
                 console.log(response);
@@ -369,12 +372,13 @@
             },
             onLineCourse(){
                 //获取选中的行
-                if(!this.row || this.row  === ""){
-                    this.$message({ message: '老铁，你不选中数据，臣妾上不了啊....',type: 'error'});
+                if(!this.sels || this.sels.length  <1){
+                    this.$message({ message: '老铁，你不选中数据，臣妾下不了啊....',type: 'error'});
                     return;
                 }
-
-                this.$http.post("/course/course/onLineCourse/"+this.row.id).then(res=>{
+                //[{id:1,name:zs},{id:2,name:zs}] 把数组里面的某个属性获取出来作为一个数组
+                var ids = this.sels.map(item => item.id);
+                this.$http.post("/course/course/onLine",ids).then(res=>{
                     var ajaxResult = res.data;
                     if(ajaxResult.success){
                         this.$message({ message: '老铁，上线成功.',type: 'success'});
@@ -385,13 +389,15 @@
                 })
             },
             offLineCourse(){
+
                 //获取选中的行
-                if(!this.row || this.row  === ""){
+                if(!this.sels || this.sels.length  <1){
                     this.$message({ message: '老铁，你不选中数据，臣妾下不了啊....',type: 'error'});
                     return;
                 }
-
-                this.$http.post("/course/course/offLineCourse/"+this.row.id).then(res=>{
+                //[{id:1,name:zs},{id:2,name:zs}] 把数组里面的某个属性获取出来作为一个数组
+                var ids = this.sels.map(item => item.id);
+                this.$http.post("/course/course/offLine",ids).then(res=>{
                     var ajaxResult = res.data;
                     if(ajaxResult.success){
                         this.$message({ message: '老铁，下线成功.',type: 'success'});
