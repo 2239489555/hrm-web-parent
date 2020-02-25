@@ -9,6 +9,7 @@ import TenantType from './views/sys/tenantType.vue'
 import Tenant from './views/sys/tenant.vue'
 import CourseType from './views/course/CourseType.vue'
 import Course from './views/course/Course.vue'
+import Pager from './views/page/Pager.vue'
 import Role from './views/itsource/role.vue'
 import Form from './views/nav1/Form.vue'
 import user from './views/nav1/user.vue'
@@ -78,6 +79,17 @@ let routes = [
         children: [
             { path: '/courseType', component: CourseType, name: '课程类型' },
             { path: '/course', component: Course, name: '课程管理' }
+        ]
+    },
+    {
+        path: '/',
+        component: Home,
+        name: '页面中心',
+        iconCls: 'fa fa-id-card-o',
+        children: [
+            { path: '/site', component: Pager, name: '站点管理' },
+            { path: '/pager', component: Pager, name: '页面管理' },
+            { path: '/pageConfig', component: Pager, name: '页面配置管理' }
         ]
     },
     {
