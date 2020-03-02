@@ -19,12 +19,13 @@
 	<script type="text/javascript" src="js/layer.js"></script>
 	<script type="text/javascript" src="js/jquery.method.js"></script>
 	<script type="text/javascript" src="js/jquery.modal.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
-	<!-- 图片缓载js -->
-	<script type="text/javascript" src="js/jquery.lazyload.js"></script>
 	<!--导入vue和axios  原来使用的npm,纯前端项目没有npm，当做js引入就ok-->
 	<script type="text/javascript" src="js/plugins/vue/dist/vue.js"></script>
 	<script type="text/javascript" src="js/plugins/axios/dist/axios.js"></script>
+
+	<script type="text/javascript" src="js/common.js"></script>
+	<!-- 图片缓载js -->
+	<script type="text/javascript" src="js/jquery.lazyload.js"></script>
 
 	<script type="text/javascript">
 		axios.defaults.baseURL = "http://127.0.0.1:1030/services"//配置前缀
@@ -741,8 +742,8 @@
 			<!--                    list<Map></Map>-->
 			<div class="crumbs-nav crumbs-nav0" v-for="node in crumbs" :key="node"  >
 				<!--                        自己-->
-				<a class="crumbs-title" @mouseout="crumbHover($event)" @mouseover="crumbHover($event)" :href="listUrl + node.courseType.id">
-					{{node.courseType.name}}
+				<a class="crumbs-title" @mouseout="crumbHover($event)" @mouseover="crumbHover($event)" :href="listUrl + node.ownerCourseType.id">
+					{{node.ownerCourseType.name}}
 					<i class="icon"></i>
 				</a>
 				<!--                        兄弟处理-->
